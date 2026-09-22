@@ -1,3 +1,4 @@
+
 import os
 import streamlit as st
 from groq import Groq
@@ -15,9 +16,9 @@ user_input = st.text_input("Posez votre question :", "")
 if st.button("Envoyer"):
     if user_input.strip() != "":
         try:
-            # Appel à l'API Groq
+            # Appel à l'API Groq avec un modèle parfaitement supporté
             response = client.chat.completions.create(
-                model="llama-3.1-8b-instant",  # Modèle valide
+                model="llama-3.3-70b-versatile",
                 messages=[
                     {"role": "user", "content": user_input}
                 ]
@@ -31,5 +32,5 @@ if st.button("Envoyer"):
             st.error(f"Une erreur est survenue : {e}")
     else:
         st.warning("Veuillez saisir un message avant d'envoyer.")
-    
+        
 
